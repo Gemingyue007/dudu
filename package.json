@@ -1,0 +1,69 @@
+{
+  "name": "drink-water-helper",
+  "version": "1.0.0",
+  "author": "虾仁猪心 <834373418@qq.com>",
+  "description": "吨吨吨 - 喝水小助手",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win --x64"
+  },
+  "build": {
+    "appId": "com.drinkwater.helper",
+    "productName": "吨吨吨",
+    "directories": {
+      "output": "dist"
+    },
+    "asar": true,
+    "compression": "maximum",
+    "files": [
+      "index.html",
+      "main.js",
+      "preload.js",
+      "lib/**/*",
+      "喝水小助手_assets/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "./icon.ico",
+        "to": "./icon.ico"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "icon.ico",
+      "requestedExecutionLevel": "asInvoker"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "吨吨吨",
+      "artifactName": "吨吨吨_安装包_${version}.${ext}",
+      "installerIcon": "./icon.ico",
+      "uninstallerIcon": "./icon.ico",
+      "installerHeaderIcon": "./icon.ico"
+    },
+    "portable": {
+      "artifactName": "吨吨吨_便携版_${version}.${ext}"
+    }
+  },
+  "devDependencies": {
+    "electron": "^22.3.27",
+    "electron-builder": "^24.13.3"
+  }
+}
